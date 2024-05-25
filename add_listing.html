@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rentify - Add Listing</title>
+    <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        .listing-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 150px;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ff4a3c;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header id="header" class="header" data-header></header>
+
+    <main>
+        <article>
+            <section class="add-listing">
+                <div class="container">
+                    <h2 class="h2 section-title">Add Your Property Listing</h2>
+                    <form class="listing-form" id="listing-form">
+                        <div class="form-group">
+                            <label for="title">Property Title</label>
+                            <input type="text" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Property Description</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Location</label>
+                            <input type="text" id="location" name="location" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Price</label>
+                            <input type="number" id="price" name="price" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bedrooms">Bedrooms</label>
+                            <input type="number" id="bedrooms" name="bedrooms" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bathrooms">Bathrooms</label>
+                            <input type="number" id="bathrooms" name="bathrooms" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="area">Area (sq ft)</label>
+                            <input type="number" id="area" name="area" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="image">Property Image</label>
+                            <input type="file" id="image" name="image" required>
+                        </div>
+                        <button type="submit" class="btn">Submit Listing</button>
+                    </form>
+                </div>
+            </section>
+        </article>
+    </main>
+
+    <footer id="footer" class="footer"></footer>
+
+    <!-- Custom JS link -->
+    <script src="./assets/js/script.js"></script>
+
+    <!-- Ionicons link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const listingForm = document.getElementById('listing-form');
+
+            listingForm.addEventListener('submit', async function (event) {
+                event.preventDefault();
+
+                const formData = new FormData(listingForm);
+                const token = localStorage.getItem('jwt_token'); // Retrieve the token from localStorage
+                console.log('JWT Token:', token); // Log token for debugging
+
+                try {
+                    const response = await fetch('http://localhost:8000/api/properties', {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': 'Bearer ' + token // Include the token in the request headers
+                        },
+                        body: formData
+                    });
+
+                    // Log response status
+                    console.log('Response status:', response.status);
+
+                    if (response.ok) {
+                        const data = await response.json();
+                        alert('Property listing added successfully!');
+                        console.log('Property listing added:', data);
+                        window.location.href = 'property_listing.html'; // Redirect to the property listing page
+                    } else {
+                        const errorData = await response.json();
+                        alert('Error adding property listing: ' + errorData.message);
+                        console.error('Error adding property listing:', errorData);
+                    }
+                } catch (error) {
+                    alert('An error occurred while adding the property listing.');
+                    console.error('An error occurred:', error);
+                }
+            });
+        });
+
+        /**
+         * Load external HTML into elements
+         */
+        function loadHTML(url, elementId) {
+            fetch(url)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById(elementId).innerHTML = data;
+                })
+                .catch(error => console.error('Error loading HTML:', error));
+        }
+
+        /**
+         * element toggle function
+         */
+        const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const addListingButton = document.getElementById('add-listing-btn');
+
+            if (addListingButton) {
+                addListingButton.addEventListener('click', function () {
+                    window.location.href = './add-listing.html';
+                });
+            }
+
+            loadHTML('header.html', 'header');
+            loadHTML('footer.html', 'footer');
+        });
+
+        /**
+         * navbar toggle
+         */
+        const navbar = document.querySelector("[data-navbar]");
+        const overlay = document.querySelector("[data-overlay]");
+        const navCloseBtn = document.querySelector("[data-nav-close-btn]");
+        const navOpenBtn = document.querySelector("[data-nav-open-btn]");
+        const navbarLinks = document.querySelectorAll("[data-nav-link]");
+
+        const navElemArr = [overlay, navCloseBtn, navOpenBtn];
+
+        for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); }
+
+        for (let i = 0; i < navElemArr.length; i++) {
+            navElemArr[i].addEventListener("click", function () {
+                elemToggleFunc(navbar);
+                elemToggleFunc(overlay);
+            });
+        }
+
+        /**
+         * header active state
+         */
+        const header = document.querySelector("[data-header]");
+
+        window.addEventListener("scroll", function () {
+            window.scrollY >= 400 ? header.classList.add("active")
+                : header.classList.remove("active");
+        });
+    </script>
+</body>
+
+</html>
