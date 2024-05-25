@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rentify - About Us</title>
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    body {
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .about-section {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .about-section h2 {
+      color: #333;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-section p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-section img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .about-section .image-wrapper {
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header" class="header" data-header>
+    <!-- The header content you provided earlier -->
+  </header>
+
+  <main>
+    <div class="container">
+      <section class="about-section">
+        <h2 class="h2">About Rentify</h2>
+        <p>Welcome to Rentify, your premier destination for finding and listing rental properties with ease. At Rentify, we understand the challenges of searching for the perfect rental home and the complexities involved in listing properties for rent. That's why we've created a platform that simplifies the entire process for both renters and property owners.</p>
+        <p>Our mission is to make renting easier, more accessible, and hassle-free. Whether you're looking for a cozy apartment, a spacious house, or a commercial property, Rentify is here to help you find the ideal place that fits your needs and budget. Our user-friendly interface and comprehensive property listings make it simple to explore various options and connect with property owners directly.</p>
+        <p>For property owners, Rentify offers an effective platform to showcase your properties to a wide audience. With our easy-to-use listing tools, you can quickly add your property details, upload photos, and reach potential tenants without any hassle.</p>
+        <p>At Rentify, we're committed to providing a seamless experience for both renters and property owners. Join us today and discover how easy renting can be!</p>
+        <div class="image-wrapper">
+          <img src="./assets/images/about-us.jpg" alt="About Rentify">
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer" data-footer>
+    <!-- The footer content you provided earlier -->
+  </footer>
+
+  <!-- Custom JS link -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- Ionicons link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      loadHTML('header.html', 'header');
+      loadHTML('footer.html', 'footer');
+    });
+
+    /**
+     * Load external HTML into elements
+     */
+    function loadHTML(url, elementId) {
+      fetch(url)
+        .then(response => response.text())
+        .then(data => {
+          document.getElementById(elementId).innerHTML = data;
+        })
+        .catch(error => console.error('Error loading HTML:', error));
+    }
+
+    /**
+     * element toggle function
+     */
+    const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const addListingButton = document.getElementById('add-listing-btn');
+
+      if (addListingButton) {
+        addListingButton.addEventListener('click', function () {
+          window.location.href = './add-listing.html';
+        });
+      }
+
+      loadHTML('header.html', 'header');
+      loadHTML('footer.html', 'footer');
+    });
+
+    /**
+     * navbar toggle
+     */
+    const navbar = document.querySelector("[data-navbar]");
+    const overlay = document.querySelector("[data-overlay]");
+    const navCloseBtn = document.querySelector("[data-nav-close-btn]");
+    const navOpenBtn = document.querySelector("[data-nav-open-btn]");
+    const navbarLinks = document.querySelectorAll("[data-nav-link]");
+
+    const navElemArr = [overlay, navCloseBtn, navOpenBtn];
+
+    for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); }
+
+    for (let i = 0; i < navElemArr.length; i++) {
+      navElemArr[i].addEventListener("click", function () {
+        elemToggleFunc(navbar);
+        elemToggleFunc(overlay);
+      });
+    }
+
+    /**
+     * header active state
+     */
+    const header = document.querySelector("[data-header]");
+
+    window.addEventListener("scroll", function () {
+      window.scrollY >= 400 ? header.classList.add("active")
+        : header.classList.remove("active");
+    });
+  </script>
+</body>
+
+</html>

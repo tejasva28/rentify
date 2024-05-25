@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homeverse - Property Listings</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+  <!-- custom css link -->
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!-- google font link -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <style>
+    body {
+      background-color: #f0f2f5;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .property-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .property-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .property-card img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .property-card h3 {
+      margin-top: 1rem;
+      color: #333;
+    }
+
+    .property-card p {
+      color: #666;
+    }
+
+    .property-card .price {
+      color: #ff6f61;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header id="header" class="header" data-header></header>
+
+  <main>
+    <div class="container">
+      <h2 class="h2 section-title">Property Listings</h2>
+      <div id="property-list" class="property-list"></div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer" class="footer"></footer>
+
+  <!-- custom js link -->
+  <script src="./assets/js/script.js"></script>
+
+  <!-- ionicon link -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const dummyProperties = [
+        {
+          id: 1,
+          title: "Modern Family Home",
+          description: "A beautiful family home with a spacious garden.",
+          location: "Indore, India",
+          price: 1200000,
+          bedrooms: 4,
+          bathrooms: 3,
+          imageUrl: "./assets/images/property-1.jpg"
+        },
+        {
+          id: 2,
+          title: "Luxury Villa",
+          description: "A luxurious villa with an ocean view.",
+          location: "Bangalore, India",
+          price: 2500000,
+          bedrooms: 5,
+          bathrooms: 4,
+          imageUrl: "./assets/images/property-2.jpg"
+        },
+        {
+          id: 3,
+          title: "Cozy Apartment",
+          description: "A cozy apartment in the heart of the city.",
+          location: "New Delhi, India",
+          price: 800000,
+          bedrooms: 2,
+          bathrooms: 2,
+          imageUrl: "./assets/images/property-3.jpg"
+        },
+        {
+          id: 4,
+          title: "Urban Flat",
+          description: "A stylish urban flat with modern amenities.",
+          location: "Mumbai, India",
+          price: 1500000,
+          bedrooms: 3,
+          bathrooms: 2,
+          imageUrl: "./assets/images/property-4.jpg"
+        },
+        {
+          id: 5,
+          title: "Country House",
+          description: "A charming country house with a large backyard.",
+          location: "Pune, India",
+          price: 1800000,
+          bedrooms: 4,
+          bathrooms: 3,
+          imageUrl: "./assets/images/property-5.jpg"
+        }
+      ];
+
+      const propertyList = document.getElementById('property-list');
+
+      dummyProperties.forEach(property => {
+        const propertyCard = document.createElement('div');
+        propertyCard.className = 'property-card';
+        propertyCard.innerHTML = `
+          <img src="${property.imageUrl}" alt="${property.title}">
+          <h3>${property.title}</h3>
+          <p>${property.description}</p>
+          <p class="price">$${property.price}</p>
+          <p>Location: ${property.location}</p>
+          <p>Bedrooms: ${property.bedrooms}</p>
+          <p>Bathrooms: ${property.bathrooms}</p>
+        `;
+        propertyCard.addEventListener('click', function () {
+          localStorage.setItem('property_' + property.id, JSON.stringify(property));
+          window.location.href = `property_details.html?id=${property.id}`;
+        });
+        propertyList.appendChild(propertyCard);
+      });
+    });
+  </script>
+
+</body>
+</html>
