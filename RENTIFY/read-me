@@ -1,0 +1,104 @@
+Rentify
+
+Welcome to Rentify, your premier destination for finding and listing rental properties with ease. Rentify simplifies the entire process for both renters and property owners, making renting more accessible and hassle-free.
+
+Table of Contents
+About Rentify
+Features
+Getting Started
+File Structure
+Contributing
+License
+About Rentify
+Rentify aims to make renting easier, more accessible, and hassle-free. Whether you're looking for a cozy apartment, a spacious house, or a commercial property, Rentify helps you find the ideal place that fits your needs and budget. Our user-friendly interface and comprehensive property listings make it simple to explore various options and connect with property owners directly.
+
+For property owners, Rentify offers an effective platform to showcase your properties to a wide audience. With our easy-to-use listing tools, you can quickly add your property details, upload photos, and reach potential tenants without any hassle.
+
+Features
+User Authentication: Secure login and signup for users.
+Property Listings: Browse through various property listings and find your ideal rental.
+Add Listing: Property owners can add their listings easily.
+Responsive Design: Optimized for both desktop and mobile devices.
+Getting Started
+To get a local copy up and running follow these simple steps.
+
+Prerequisites
+Ensure you have the following installed:
+
+Node.js
+npm (Node Package Manager)
+Installation
+Clone the repo:
+
+sh
+Copy code
+git clone https://github.com/tejasva28/rentify.git
+Navigate to the project directory:
+
+sh
+Copy code
+cd rentify
+Install NPM packages:
+
+sh
+Copy code
+npm install
+Start the development server:
+
+sh
+Copy code
+npm start
+File Structure
+The project file structure is as follows:
+
+python
+Copy code
+RENTIFY/
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── images/
+│   │   ├── about-banner-1.png
+│   │   ├── about-banner-2.jpg
+│   │   ├── author.jpg
+│   │   ├── blog-1.png
+│   │   ├── blog-2.jpg
+│   │   ├── blog-3.jpg
+│   │   ├── hero-banner.png
+│   │   ├── logo-light.png
+│   │   ├── logo.png
+│   │   ├── property-1.jpg
+│   │   ├── property-2.jpg
+│   │   ├── property-3.jpg
+│   │   ├── property-4.png
+│   │   ├── service-1.png
+│   │   ├── service-2.png
+│   │   ├── service-3.png
+│   └── js/
+│       └── script.js
+├── readme-images/
+│   ├── desktop.png
+│   ├── mobile.png
+│   └── project-logo.png
+├── about_us.html
+├── add_listing.html
+├── favicon.svg
+├── footer.html
+├── header.html
+├── index.html
+├── index.txt
+├── login.html
+├── property_details.html
+├── property_listing.html
+├── signup.html
+└── style-guide.md
+Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+
+Fork the Project
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+Push to the Branch (git push origin feature/AmazingFeature)
+Open a Pull Request
+License
+Distributed under the MIT License. See LICENSE for more information.
