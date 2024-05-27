@@ -1,101 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Homeverse - Login</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <style>
-    .login-container {
-      max-width: 400px;
-      margin: 0 auto;
-      padding: 2rem;
-      background-color: #f9f9f9;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .login-form { display: flex; flex-direction: column; }
-    .form-group { margin-bottom: 1.5rem; }
-    .form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
-    .form-group input { width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: 4px; font-size: 1rem; }
-    .btn { display: block; width: 100%; padding: 0.75rem; background-color: #ff6f61; color: #fff; border: none; border-radius: 4px; font-size: 1rem; cursor: pointer; text-align: center; }
-    .btn:hover { background-color: #ff4a3c; }
-    .form-links { display: flex; justify-content: space-between; margin-top: 1rem; }
-    .form-links a { color: #ff6f61; text-decoration: none; }
-    .form-links a:hover { text-decoration: underline; }
-  </style>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homeverse - Login</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <style>
+        .login-container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #ff6f61;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #ff4a3c;
+        }
+
+        .form-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1rem;
+        }
+
+        .form-links a {
+            color: #ff6f61;
+            text-decoration: none;
+        }
+
+        .form-links a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
+
 <body>
-  <header id="header" class="header" data-header></header>
-  <main>
-    <section class="login-section">
-      <div class="container">
-        <div class="login-container">
-          <h2 class="h2 section-title">Login</h2>
-          <form class="login-form" id="login-form">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
+    <header id="header" class="header" data-header></header>
+    <main>
+        <section class="login-section">
+            <div class="container">
+                <div class="login-container">
+                    <h2 class="h2 section-title">Login</h2>
+                    <form class="login-form" id="login-form">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" required>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                        <div class="form-links">
+                            <a href="#">Forgot Password?</a>
+                            <a href="./signup.html">Sign Up</a>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input type="password" id="password" name="password" required>
-            </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="form-links">
-              <a href="#">Forgot Password?</a>
-              <a href="./signup.html">Sign Up</a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </section>
-  </main>
- <!-- FOOTER -->
-<footer id="footer" class="footer"></footer>
+        </section>
+    </main>
+    <footer id="footer" class="footer"></footer>
 
-<!-- custom js link -->
-<script src="./assets/js/script.js"></script>
+    <!-- Custom JS link -->
+    <script src="./assets/js/script.js"></script>
 
-<!-- ionicon link -->
-<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Ionicons link -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<script>
-   document.getElementById('login-form').addEventListener('submit', async function (event) {
-    event.preventDefault();
+    <script>
+        document.getElementById('login-form').addEventListener('submit', async function (event) {
+            event.preventDefault();
 
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
 
-    try {
-      console.log('Submitting login form', { email, password }); // Log form data
+            try {
+                console.log('Submitting login form', { email, password }); // Log form data
 
-      const response = await fetch('http://localhost:8000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
-      });
+                const response = await fetch('http://localhost:8000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
 
-      const data = await response.json();
-      console.log('Response data:', data); // Log response data
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Login failed:', errorData);
+                    alert('Error logging in: ' + errorData.message);
+                    return;
+                }
 
-      if (response.ok) {
-        alert('Login successful');
-        localStorage.setItem('jwt_token', data.token); // Store the JWT token in local storage
-        window.location.href = 'add_listing.html'; // Redirect to the add listing page
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error('Error:', error); // Log error for debugging
-      alert('An error occurred. Please try again.');
-    }
-  });
-</script>
+                const data = await response.json();
+                console.log('Response data:', data); // Log response data
 
+                if (data.token && data.user) {
+                    alert('Login successful');
+                    localStorage.setItem('jwt_token', data.token); // Store the JWT token in local storage
+                    localStorage.setItem('user_name', data.user.name); // Store user name
+                    localStorage.setItem('user_email', data.user.email); // Store user email
+                    window.location.href = 'profile.html'; // Redirect to the profile page
+                } else {
+                    console.error('Invalid response data:', data);
+                    alert('Invalid response from server.');
+                }
+            } catch (error) {
+                console.error('Error:', error); // Log error for debugging
+                alert('An error occurred. Please try again.');
+            }
+        });
+    </script>
 </body>
+
 </html>

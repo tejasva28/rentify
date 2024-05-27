@@ -3,22 +3,41 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rentify - Add Listing</title>
+
+    <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
+
+    <!-- custom css link -->
     <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- google font link -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&family=Poppins:wght@400;500;600;700&display=swap"
         rel="stylesheet">
+
     <style>
-        .listing-form {
-            max-width: 600px;
+        body {
+            background-color: #f0f2f5;
+            font-family: 'Nunito Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 2rem;
-            background-color: #f9f9f9;
+        }
+
+        .listing-form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -67,161 +86,194 @@
 </head>
 
 <body>
-
-    <header id="header" class="header" data-header></header>
+    <!-- HEADER -->
+    <header id="header" class="header" data-header>
+        <div class="overlay" data-overlay></div>
+        <div class="header-top">
+            <div class="container">
+                <ul class="header-top-list">
+                    <li>
+                        <a href="mailto:info@rentify.com" class="header-top-link">
+                            <ion-icon name="mail-outline"></ion-icon>
+                            <span>info@rentify.com</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="header-top-link">
+                            <ion-icon name="location-outline"></ion-icon>
+                            <address>Saravanampatti, Coimbatore</address>
+                        </a>
+                    </li>
+                </ul>
+                <div class="wrapper">
+                    <ul class="header-top-social-list">
+                        <li><a href="#" class="header-top-social-link"><ion-icon name="logo-facebook"></ion-icon></a>
+                        </li>
+                        <li><a href="#" class="header-top-social-link"><ion-icon name="logo-twitter"></ion-icon></a>
+                        </li>
+                        <li><a href="#" class="header-top-social-link"><ion-icon name="logo-instagram"></ion-icon></a>
+                        </li>
+                        <li><a href="#" class="header-top-social-link"><ion-icon name="logo-pinterest"></ion-icon></a>
+                        </li>
+                    </ul>
+                    <button class="header-top-btn" id="add-listing-btn"
+                        onclick="window.location.href='add_listing.html'">Add Listing</button>
+                </div>
+            </div>
+        </div>
+        <div class="header-bottom">
+            <div class="container">
+                <a href="index.html" class="logo"><strong
+                        style="font-size: 35px; color: var(--orange-soda);">Rentify.</strong></a>
+                <nav class="navbar" data-navbar>
+                    <div class="navbar-top">
+                        <a href="index.html" class="logo"><img src="./assets/images/logo.png" alt="Rentify logo"
+                                style="height: 40px; width: auto;"></a>
+                        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu"><ion-icon
+                                name="close-outline"></ion-icon></button>
+                    </div>
+                    <div class="navbar-bottom">
+                        <ul class="navbar-list">
+                            <li><a href="index.html" class="navbar-link" data-nav-link>Home</a></li>
+                            <li><a href="about_us.html" class="navbar-link" data-nav-link>About</a></li>
+                            <li><a href="property_listing.html" class="navbar-link" data-nav-link>Property</a></li>
+                            <li><a href="#blog" class="navbar-link" data-nav-link>Blog</a></li>
+                            <li><a href="#contact" class="navbar-link" data-nav-link>Contact</a></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="header-bottom-actions">
+                    <button class="header-bottom-actions-btn" aria-label="Search"><ion-icon
+                            name="search-outline"></ion-icon><span>Search</span></button>
+                    <button class="header-bottom-actions-btn" aria-label="Profile"
+                        onclick="window.location.href='profile.html'"><ion-icon
+                            name="person-outline"></ion-icon><span>Profile</span></button>
+                    <button class="header-bottom-actions-btn" aria-label="Cart"
+                        onclick="window.location.href='cart.html'"><ion-icon
+                            name="cart-outline"></ion-icon><span>Cart</span></button>
+                    <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu"><ion-icon
+                            name="menu-outline"></ion-icon><span>Menu</span></button>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main>
-        <article>
+        <div class="container">
             <section class="add-listing">
-                <div class="container">
-                    <h2 class="h2 section-title">Add Your Property Listing</h2>
-                    <form class="listing-form" id="listing-form">
-                        <div class="form-group">
-                            <label for="title">Property Title</label>
-                            <input type="text" id="title" name="title" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="description">Property Description</label>
-                            <textarea id="description" name="description" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="location">Location</label>
-                            <input type="text" id="location" name="location" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="price">Price</label>
-                            <input type="number" id="price" name="price" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bedrooms">Bedrooms</label>
-                            <input type="number" id="bedrooms" name="bedrooms" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="bathrooms">Bathrooms</label>
-                            <input type="number" id="bathrooms" name="bathrooms" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="area">Area (sq ft)</label>
-                            <input type="number" id="area" name="area" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="image">Property Image</label>
-                            <input type="file" id="image" name="image" required>
-                        </div>
-                        <button type="submit" class="btn">Submit Listing</button>
-                    </form>
-                </div>
+                <h2 class="h2 section-title">Add Your Property Listing</h2>
+                <form class="listing-form" id="listing-form">
+                    <div class="form-group">
+                        <label for="title">Property Title</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Property Description</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price</label>
+                        <input type="number" id="price" name="price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bedrooms">Bedrooms</label>
+                        <input type="number" id="bedrooms" name="bedrooms" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bathrooms">Bathrooms</label>
+                        <input type="number" id="bathrooms" name="bathrooms" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="area">Area (sq ft)</label>
+                        <input type="number" id="area" name="area" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">Property Image</label>
+                        <input type="file" id="image" name="image" accept="image/*" required>
+                    </div>
+                    <button type="submit" class="btn">Submit Listing</button>
+                </form>
             </section>
-        </article>
+        </div>
     </main>
 
+    <!-- FOOTER -->
     <footer id="footer" class="footer"></footer>
 
-    <!-- Custom JS link -->
-    <script src="./assets/js/script.js"></script>
-
-    <!-- Ionicons link -->
+    <!-- Include the necessary Ionicons library -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            // Check if token exists in local storage
+            const token = localStorage.getItem('jwt_token');
+            if (!token) {
+                // Redirect to login page if token is not found
+                window.location.href = 'login.html';
+                return;
+            }
+
             const listingForm = document.getElementById('listing-form');
 
-            listingForm.addEventListener('submit', async function (event) {
-                event.preventDefault();
+            if (listingForm) {
+                listingForm.addEventListener('submit', async function (event) {
+                    event.preventDefault();
 
-                const formData = new FormData(listingForm);
-                const token = localStorage.getItem('jwt_token'); // Retrieve the token from localStorage
-                console.log('JWT Token:', token); // Log token for debugging
+                    const formData = new FormData(listingForm);
+                    const file = formData.get('image');
+                    const base64String = await convertToBase64(file);
 
-                try {
-                    const response = await fetch('http://localhost:8000/api/properties', {
-                        method: 'POST',
-                        headers: {
-                            'Authorization': 'Bearer ' + token // Include the token in the request headers
-                        },
-                        body: formData
-                    });
+                    const payload = {
+                        title: formData.get('title'),
+                        description: formData.get('description'),
+                        location: formData.get('location'),
+                        price: formData.get('price'),
+                        bedrooms: formData.get('bedrooms'),
+                        bathrooms: formData.get('bathrooms'),
+                        area: formData.get('area'),
+                        imageBase64: base64String
+                    };
 
-                    // Log response status
-                    console.log('Response status:', response.status);
+                    console.log('JWT Token:', token); // Log the token to check if it's being retrieved correctly
 
-                    if (response.ok) {
-                        const data = await response.json();
-                        alert('Property listing added successfully!');
-                        console.log('Property listing added:', data);
-                        window.location.href = 'property_listing.html'; // Redirect to the property listing page
-                    } else {
-                        const errorData = await response.json();
-                        alert('Error adding property listing: ' + errorData.message);
-                        console.error('Error adding property listing:', errorData);
+                    try {
+                        const response = await fetch('http://localhost:8000/api/properties', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                                'Authorization': 'Bearer ' + token // Include the token in the request headers
+                            },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (response.ok) {
+                            const data = await response.json();
+                            alert('Property listing added successfully!');
+                            window.location.href = 'property_listing.html'; // Redirect to the property listing page
+                        } else {
+                            const errorData = await response.json();
+                            alert('Error adding property listing: ' + errorData.message);
+                        }
+                    } catch (error) {
+                        alert('An error occurred while adding the property listing.');
+                        console.error('Error:', error);
                     }
-                } catch (error) {
-                    alert('An error occurred while adding the property listing.');
-                    console.error('An error occurred:', error);
-                }
-            });
-        });
-
-        /**
-         * Load external HTML into elements
-         */
-        function loadHTML(url, elementId) {
-            fetch(url)
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById(elementId).innerHTML = data;
-                })
-                .catch(error => console.error('Error loading HTML:', error));
-        }
-
-        /**
-         * element toggle function
-         */
-        const elemToggleFunc = function (elem) { elem.classList.toggle("active"); }
-
-        document.addEventListener('DOMContentLoaded', function () {
-            const addListingButton = document.getElementById('add-listing-btn');
-
-            if (addListingButton) {
-                addListingButton.addEventListener('click', function () {
-                    window.location.href = './add-listing.html';
                 });
             }
 
-            loadHTML('header.html', 'header');
-            loadHTML('footer.html', 'footer');
-        });
-
-        /**
-         * navbar toggle
-         */
-        const navbar = document.querySelector("[data-navbar]");
-        const overlay = document.querySelector("[data-overlay]");
-        const navCloseBtn = document.querySelector("[data-nav-close-btn]");
-        const navOpenBtn = document.querySelector("[data-nav-open-btn]");
-        const navbarLinks = document.querySelectorAll("[data-nav-link]");
-
-        const navElemArr = [overlay, navCloseBtn, navOpenBtn];
-
-        for (let i = 0; i < navbarLinks.length; i++) { navElemArr.push(navbarLinks[i]); }
-
-        for (let i = 0; i < navElemArr.length; i++) {
-            navElemArr[i].addEventListener("click", function () {
-                elemToggleFunc(navbar);
-                elemToggleFunc(overlay);
-            });
-        }
-
-        /**
-         * header active state
-         */
-        const header = document.querySelector("[data-header]");
-
-        window.addEventListener("scroll", function () {
-            window.scrollY >= 400 ? header.classList.add("active")
-                : header.classList.remove("active");
+            function convertToBase64(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.readAsDataURL(file);
+                    reader.onload = () => resolve(reader.result.split(',')[1]);
+                    reader.onerror = error => reject(error);
+                });
+            }
         });
     </script>
 </body>

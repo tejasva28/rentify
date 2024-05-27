@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homeverse - Property Listings</title>
+    <title>My Cart</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" href="./favicon.svg" type="image/svg+xml">
@@ -22,6 +22,9 @@
     <style>
         body {
             background-color: #f0f2f5;
+            font-family: 'Nunito Sans', sans-serif;
+            margin: 0;
+            padding: 0;
         }
 
         .container {
@@ -30,38 +33,37 @@
             padding: 2rem;
         }
 
-        .property-list {
+        .cart-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 1.5rem;
         }
 
-        .property-card {
+        .cart-item {
             background-color: #fff;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 1rem;
             display: flex;
             flex-direction: column;
-            cursor: pointer;
         }
 
-        .property-card img {
+        .cart-item img {
             max-width: 100%;
             height: auto;
             border-radius: 8px;
         }
 
-        .property-card h3 {
+        .cart-item h3 {
             margin-top: 1rem;
             color: #333;
         }
 
-        .property-card p {
+        .cart-item p {
             color: #666;
         }
 
-        .property-card .price {
+        .cart-item .price {
             color: #ff6f61;
             font-weight: bold;
         }
@@ -75,8 +77,8 @@
 
     <main>
         <div class="container">
-            <h2 class="h2 section-title">Property Listings</h2>
-            <div id="property-list" class="property-list"></div>
+            <h2 class="h2 section-title">My Cart</h2>
+            <div id="cart-list" class="cart-list"></div>
         </div>
     </main>
 
@@ -91,22 +93,21 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async function () {
-            const propertyList = document.getElementById('property-list');
+        document.addEventListener('DOMContentLoaded', function () {
+            const token = localStorage.getItem('jwt_token');
+            if (!token) {
+                window.location.href = 'login.html';
+                return;
+            }
 
-            try {
-                // Fetch the list of properties from the backend API
-                const response = await fetch('http://localhost:8000/api/properties');
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                }
-                const properties = await response.json();
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartList = document.getElementById('cart-list');
 
-                // Render each property as a card
-                properties.forEach(property => {
-                    const propertyCard = document.createElement('div');
-                    propertyCard.className = 'property-card';
-                    propertyCard.innerHTML = `
+            if (cart.length > 0) {
+                cart.forEach(property => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
                         <img src="${property.imageUrl}" alt="${property.title}">
                         <h3>${property.title}</h3>
                         <p>${property.description}</p>
@@ -115,18 +116,10 @@
                         <p>Bedrooms: ${property.bedrooms}</p>
                         <p>Bathrooms: ${property.bathrooms}</p>
                     `;
-                    propertyCard.addEventListener('click', function () {
-                        localStorage.setItem('property_' + property._id, JSON.stringify(property));
-                        window.location.href = `property_details.html?id=${property._id}`;
-                    });
-                    propertyList.appendChild(propertyCard);
+                    cartList.appendChild(cartItem);
                 });
-            } catch (error) {
-                console.error('Error fetching properties:', error);
-                // Optionally, display an error message to the user
-                const errorMessage = document.createElement('p');
-                errorMessage.textContent = 'Failed to load property listings. Please try again later.';
-                propertyList.appendChild(errorMessage);
+            } else {
+                cartList.innerHTML = '<p>No items in your cart.</p>';
             }
         });
     </script>

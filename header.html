@@ -22,7 +22,8 @@
         <li><a href="#" class="header-top-social-link"><ion-icon name="logo-instagram"></ion-icon></a></li>
         <li><a href="#" class="header-top-social-link"><ion-icon name="logo-pinterest"></ion-icon></a></li>
       </ul>
-      <button class="header-top-btn" id="add-listing-btn">Add Listing</button>
+      <button class="header-top-btn" id="add-listing-btn" onclick="window.location.href='add_listing.html'">Add
+        Listing</button>
     </div>
   </div>
 </div>
@@ -49,12 +50,26 @@
     <div class="header-bottom-actions">
       <button class="header-bottom-actions-btn" aria-label="Search"><ion-icon
           name="search-outline"></ion-icon><span>Search</span></button>
-      <button class="header-bottom-actions-btn" aria-label="Profile" onclick="window.location.href='login.html'"><ion-icon
+      <button class="header-bottom-actions-btn" aria-label="Profile"
+        onclick="window.location.href='profile.html'"><ion-icon
           name="person-outline"></ion-icon><span>Profile</span></button>
-      <button class="header-bottom-actions-btn" aria-label="Cart"><ion-icon
+      <button class="header-bottom-actions-btn" aria-label="Cart" onclick="window.location.href='cart.html'"><ion-icon
           name="cart-outline"></ion-icon><span>Cart</span></button>
       <button class="header-bottom-actions-btn" data-nav-open-btn aria-label="Open Menu"><ion-icon
           name="menu-outline"></ion-icon><span>Menu</span></button>
     </div>
   </div>
 </div>
+
+<!-- Include the necessary Ionicons library -->
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<!-- Ensure the script is correctly loaded -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('add-listing-btn').addEventListener('click', function () {
+      window.location.href = 'add_listing.html';
+    });
+  });
+</script>
